@@ -1,3 +1,8 @@
+"""
+Some functions to edit strings
+
+TODO : Count letters in text
+"""
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
