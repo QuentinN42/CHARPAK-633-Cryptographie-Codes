@@ -11,8 +11,8 @@ class Shift:
 
 class Switch:
     def __init__(self, dic):
-        self.dic = dic
+        self.dic: dict = dic
 
     def __call__(self, _in):
-        _out = _in  # TODO: dic[e] for e in _in
+        _out = "".join([self.dic[e] if e in self.dic.keys() else e for e in _in])
         return _out
