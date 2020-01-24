@@ -1,9 +1,18 @@
 """
 Some functions to edit strings
-
-TODO : Count letters in text
 """
 alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+
+def frequency(txt: str):
+    """
+    extract number of letters for each letters
+    :param txt:
+    :return: dict of frequency
+    >>> frequency('bienvenue') == {'b' : 1, 'i' : 1, 'e' : 3, 'n' : 2, 'v' : 1, 'u' : 1}
+    True
+    """
+    return {c: txt.count(c) for c in set(txt)}
 
 
 def ln(char: str):
