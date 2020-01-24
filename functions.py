@@ -30,15 +30,28 @@ def nl(numb: int):
 
 
 class Shift:
-    def __init__(self, dec):
-        pass
+    """
+    >>> Shift(-10)("abc")
+    'qrs'
+    >>> Shift(15)("abc")
+    'pqr'
+    >>> Shift(2)("abcdefghijklmnopqrstuvwxyz")
+    'cdefghijklmnopqrstuvwxyzab'
+    """
+    def __init__(self, dec: int):
+        _dic: dict = {e: nl(((ln(e)+dec-1) % 26)+1) for e in alphabet}
+        self.func = Switch(_dic)
 
     def __call__(self, _in):
-        _out = _in  # TODO: add func
+        _out = self.func(_in)
         return _out
 
 
 class Switch:
+    """
+    >>> Switch({"a":"b", "b":"a"})("aabb")
+    'bbaa'
+    """
     def __init__(self, dic: dict):
         self.dic: dict = dic
 
