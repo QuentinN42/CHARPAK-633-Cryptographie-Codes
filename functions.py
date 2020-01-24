@@ -15,6 +15,26 @@ def frequency(txt: str):
     return {c: txt.count(c) for c in set(txt)}
 
 
+def search_shift(txt: str):
+    """
+    get the most frequent letter
+    assuming this letter is 'e' (most frequent in french)
+    find the shift from this letter
+    >>> search_shift('aaa')
+    4
+    >>> search_shift('eee')
+    0
+    """
+    freqs = frequency(txt)
+    letter = max(freqs.keys(), key=lambda x: freqs[x])
+    shift = ln('e') - ln(letter)
+    return shift
+
+
+def auto_shift(txt: str):
+    return Shift(search_shift(txt))(txt)
+
+
 def ln(char: str):
     """
     letter to number
