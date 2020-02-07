@@ -92,3 +92,16 @@ class Switch:
     def __call__(self, _in):
         _out = "".join([self.dic[e] if e in self.dic.keys() else e for e in _in])
         return _out
+
+
+class Transpose:
+    """
+    >>> Transpose(2)("abcd")
+    'acbd'
+    """
+    def __init__(self, n: int):
+        self.n: int = n
+
+    def __call__(self, _in):
+        _out = "".join([_in[i::self.n] for i in range(self.n)])
+        return _out
