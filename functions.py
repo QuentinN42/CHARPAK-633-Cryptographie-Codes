@@ -66,18 +66,17 @@ def nl(numb: int):
 class Shift:
     """
     >>> Shift(-10)("abc")
-    'qrs'
+    'WXY'
     >>> Shift(15)("abc")
     'pqr'
     >>> Shift(2)("abcdefghijklmnopqrstuvwxyz")
-    'cdefghijklmnopqrstuvwxyzab'
+    'cdefghijklmnopqrstuvwxyz{|'
     """
     def __init__(self, dec: int):
-        _dic: dict = {e: nl(((ln(e)+dec-1) % 26)+1) for e in alphabet}
-        self.func = Switch(_dic)
+        self.dec: int = dec
 
     def __call__(self, _in):
-        _out = self.func(_in)
+        _out = "".join([chr(ord(e)+self.dec) for e in _in])
         return _out
 
 
