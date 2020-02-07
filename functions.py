@@ -27,12 +27,17 @@ def search_shift(txt: str):
     """
     freqs = frequency(txt)
     letter = max(freqs.keys(), key=lambda x: freqs[x])
-    shift = ln('e') - ln(letter)
+    shift = ord('e') - ord(letter)
     return shift
 
 
-def auto_shift(txt: str):
-    return Shift(search_shift(txt))(txt)
+def auto_shift(filename: str):
+    with open(filename, "r") as f:
+        content = f.read()
+
+    result = Shift(search_shift(content))(content)
+
+    return result
 
 
 def ln(char: str):
@@ -103,4 +108,23 @@ class Transpose:
 
     def __call__(self, _in):
         _out = "".join([_in[i::self.n] for i in range(self.n)])
+        return _out
+
+
+class LinspaceCut:
+    def __init__(self, n):
+        self.n = n
+
+    def __call__(self, _in):
+        return [_in[i::self.n] for i in range(self.n)]
+
+
+class MultiFunc:
+    def __init__(self, cutter, funcs, merger):
+        self.cutter = cutter
+        self.funcs = funcs
+        self.merger = merger
+
+    def __call__(self, _in):
+        _out = "".join(self.merger([f(sub_in) for f, sub_in in zip(self.funcs, self.cutter(_in))]))
         return _out
