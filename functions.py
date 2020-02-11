@@ -119,6 +119,24 @@ class LinspaceCut:
         return [_in[i::self.n] for i in range(self.n)]
 
 
+def simpleMerge(l: list):
+    return "".join(l)
+
+
+def zipMerge(l: list):
+    """
+    >>> zipMegre(["abc", "abc", "a"]) == 'aaabbcc'
+    True
+    """
+    max_len = max(map(len, l))
+    _out = ""
+    for j in range(max_len):
+        for i in range(len(l)):
+            if j < len(l[i]):
+                _out += l[i][j]
+    return _out
+
+
 class MultiFunc:
     def __init__(self, cutter, funcs, merger):
         self.cutter = cutter
