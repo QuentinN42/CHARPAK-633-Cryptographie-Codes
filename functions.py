@@ -27,7 +27,7 @@ def search_shift(txt: str):
     """
     freqs = frequency(txt)
     letter = max(freqs.keys(), key=lambda x: freqs[x])
-    shift = ord('e') - ord(letter)
+    shift = ord(' ') - ord(letter)
     return shift
 
 
