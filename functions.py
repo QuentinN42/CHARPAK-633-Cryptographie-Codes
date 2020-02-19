@@ -27,7 +27,7 @@ def search_shift(txt: str):
     """
     freqs = frequency(txt)
     letter = max(freqs.keys(), key=lambda x: freqs[x])
-    shift = ord(' ') - ord(letter)
+    shift = ord(" ") - ord(letter)
     return shift
 
 
@@ -77,11 +77,12 @@ class Shift:
     >>> Shift(2)("abcdefghijklmnopqrstuvwxyz")
     'cdefghijklmnopqrstuvwxyz{|'
     """
+
     def __init__(self, dec: int):
         self.dec: int = dec
 
     def __call__(self, _in):
-        _out = "".join([chr(ord(e)+self.dec) for e in _in])
+        _out = "".join([chr(ord(e) + self.dec) for e in _in])
         return _out
 
 
@@ -90,6 +91,7 @@ class Switch:
     >>> Switch({"a":"b", "b":"a"})("aabb")
     'bbaa'
     """
+
     def __init__(self, dic: dict):
         self.dic: dict = dic
 
@@ -103,11 +105,12 @@ class Transpose:
     >>> Transpose(2)("abcd")
     'acbd'
     """
+
     def __init__(self, n: int):
         self.n: int = n
 
     def __call__(self, _in):
-        _out = "".join([_in[i::self.n] for i in range(self.n)])
+        _out = "".join([_in[i :: self.n] for i in range(self.n)])
         return _out
 
 
@@ -116,7 +119,7 @@ class LinspaceCut:
         self.n = n
 
     def __call__(self, _in):
-        return [_in[i::self.n] for i in range(self.n)]
+        return [_in[i :: self.n] for i in range(self.n)]
 
 
 def simpleMerge(l: list):
@@ -144,5 +147,7 @@ class MultiFunc:
         self.merger = merger
 
     def __call__(self, _in):
-        _out = "".join(self.merger([f(sub_in) for f, sub_in in zip(self.funcs, self.cutter(_in))]))
+        _out = "".join(
+            self.merger([f(sub_in) for f, sub_in in zip(self.funcs, self.cutter(_in))])
+        )
         return _out

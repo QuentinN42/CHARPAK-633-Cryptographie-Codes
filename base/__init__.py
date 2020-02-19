@@ -1,5 +1,3 @@
-
-
 def decipher(filename: str, dec: callable):
     with open(filename, "r") as f:
         content = f.read()
