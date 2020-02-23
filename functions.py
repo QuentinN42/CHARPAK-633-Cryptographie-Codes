@@ -128,7 +128,7 @@ def simpleMerge(l: list):
 
 def zipMerge(l: list):
     """
-    >>> zipMegre(["abc", "abc", "a"]) == 'aaabbcc'
+    >>> zipMerge(["abc", "abc", "a"]) == 'aaabbcc'
     True
     """
     max_len = max(map(len, l))
