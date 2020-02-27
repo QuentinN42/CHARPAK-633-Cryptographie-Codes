@@ -18,11 +18,11 @@ def frequency(txt: str):
 def search_shift(txt: str):
     """
     get the most frequent letter
-    assuming this letter is 'e' (most frequent in french)
+    assuming this letter is SPACE
     find the shift from this letter
     >>> search_shift('aaa')
-    4
-    >>> search_shift('eee')
+    -65
+    >>> search_shift('   ')
     0
     """
     freqs = frequency(txt)
