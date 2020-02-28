@@ -1,16 +1,5 @@
-def decipher(filename: str, dec: callable):
-    with open(filename, "r") as f:
-        content = f.read()
+from .abstract_classes import *
+from .reader import *
+from .functions import *
 
-    result = dec(content)
-
-    return result
-
-
-def cipher(filename: str, cip: callable):
-    with open(filename, "r") as f:
-        content = f.read()
-
-    result = cip(content)
-
-    return result
+alphabet = "abcdefghijklmnopqrstuvwxyz"
