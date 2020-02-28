@@ -30,34 +30,6 @@ def search_shift(txt: str):
     return shift
 
 
-def ln(char: str):
-    """
-    letter to number
-    :param char: a character
-    :return numb: a number
-    >>> ln("a")
-    1
-    >>> ln("r")
-    18
-    """
-    numb = ord(char.lower()) - 96
-    return numb
-
-
-def nl(numb: int):
-    """
-    number to letter
-    :param numb: a number
-    :return char: a character
-    >>> nl(23)
-    'w'
-    >>> nl(3)
-    'c'
-    """
-    char = chr(numb + 96)
-    return char
-
-
 def simpleMerge(l: list):
     return "".join(l)
 
