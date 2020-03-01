@@ -2,10 +2,16 @@
 Some functions to edit strings
 """
 import numpy as np
-from sklearn.metrics import r2_score as r2
+from sklearn.metrics import r2_score
 
 from .abstract_classes import LinspaceCut
 from .const import th
+
+
+def r2(a, b):
+    _a = a[:min(len(a), len(b))]
+    _b = b[:min(len(a), len(b))]
+    return r2_score(_a, _b)
 
 
 def frequency(txt: str):
@@ -45,10 +51,7 @@ def search_vignere(txt: str, n: int = 50) -> int:
     cutters = map(LinspaceCut, _range)
     txts = [cut(txt)[0] for cut in cutters]
     freqs = [np.array(sorted(frequency(tx).values(), reverse=True)[1:])/len(tx) for tx in txts]
-    freqs_r2 = [freq[:min(len(freq), len(th))] for freq in freqs]
-    th_r2    = [  th[:min(len(freq), len(th))] for freq in freqs]
-
-    r2s = [r2(t, f) for t,f in zip(th_r2, freqs_r2)]
+    r2s = [r2(t, f) for t, f in zip(th, freqs)]
     cle = max(_range, key=lambda i: r2s[i-1])
     return cle
 
