@@ -1,3 +1,8 @@
+"""
+Abstract decipher classes
+"""
+
+
 class Shift:
     """
     >>> Shift(-10)("abc")

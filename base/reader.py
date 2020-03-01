@@ -1,8 +1,8 @@
 """
 Basic auto cipher and decipher
 """
-from .abstract_classes import Shift, MultiFunc, LinspaceCut
-from .functions import search_shift, zipMerge
+from .functions import search_shift, search_vignere, zipMerge
+from .abstract_classes import Shift, LinspaceCut, MultiFunc
 
 
 def decipher(filename: str, dec: callable):
@@ -10,15 +10,6 @@ def decipher(filename: str, dec: callable):
         content = f.read()
 
     result = dec(content)
-
-    return result
-
-
-def cipher(filename: str, cip: callable):
-    with open(filename, "r") as f:
-        content = f.read()
-
-    result = cip(content)
 
     return result
 
@@ -32,11 +23,21 @@ def auto_shift(filename: str):
     return result
 
 
-def vignere(filename: str, nb_cle: int):
+def auto_vignere(filename: str):
     with open(filename, "r") as f:
         content = f.read()
 
-    cut = LinspaceCut(nb_cle)
-    keys = map(search_shift, cut(content))
-    funcs = map(Shift, keys)
-    return decipher(filename, MultiFunc(cut, funcs, zipMerge))
+    result = Vignere(search_vignere(content))(content)
+
+    return result
+
+
+class Vignere:
+    def __init__(self, nb_cle: int):
+        self.nb_cle = nb_cle
+
+    def __call__(self, content):
+        cut = LinspaceCut(self.nb_cle)
+        keys = map(search_shift, cut(content))
+        funcs = map(Shift, keys)
+        return MultiFunc(cut, funcs, zipMerge)(content)
