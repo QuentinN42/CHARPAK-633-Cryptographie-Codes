@@ -51,7 +51,7 @@ def search_vignere(txt: str, n: int = 50) -> int:
     cutters = map(LinspaceCut, _range)
     txts = [cut(txt)[0] for cut in cutters]
     freqs = [np.array(sorted(frequency(tx).values(), reverse=True)[1:])/len(tx) for tx in txts]
-    r2s = [r2(t, f) for t, f in zip(th, freqs)]
+    r2s = [r2(t, f) for t, f in zip([th] * len(freqs), freqs)]
     cle = max(_range, key=lambda i: r2s[i-1])
     return cle
 
