@@ -10,8 +10,8 @@ from .const import letter_frequency, word_frequency
 
 
 def r2(a, b):
-    _a = a[:min(len(a), len(b))]
-    _b = b[:min(len(a), len(b))]
+    _a = a[: min(len(a), len(b))]
+    _b = b[: min(len(a), len(b))]
     return r2_score(_a, _b)
 
 
@@ -32,7 +32,7 @@ def word_len_frequency_dict(txt):
         txt = txt.replace("  ", " ")
     splited = txt.split(" ")
     le = len(splited)
-    di = {w: splited.count(w)/le for w in set(splited)}
+    di = {w: splited.count(w) / le for w in set(splited)}
     return di
 
 
@@ -62,9 +62,12 @@ def search_vignere(txt: str, n: int = 50) -> int:
     cutters = map(LinspaceCut, _range)
     txts = [cut(txt)[0] for cut in cutters]
     print("Vignere test :")
-    freqs = [np.array(sorted(frequency(tx).values(), reverse=True)[1:])/len(tx) for tx in tqdm(txts)]
+    freqs = [
+        np.array(sorted(frequency(tx).values(), reverse=True)[1:]) / len(tx)
+        for tx in tqdm(txts)
+    ]
     r2s = [r2(letter_frequency, f) for f in freqs]
-    cle = max(_range, key=lambda i: r2s[i-1])
+    cle = max(_range, key=lambda i: r2s[i - 1])
     return cle
 
 
@@ -79,7 +82,7 @@ def search_transpose(txt: str) -> int:
     print("Transpose test :")
     r2s = [r2(first, test_transpose(i, txt)) for i in tqdm(range(1, len(txt)))]
     m = max(range(1, len(txt)), key=lambda i: r2s[i - 1])
-    return m if r2s[m - 1] > 0.7 else 0
+    return m if r2s[m - 1] > 0.6 else 0
 
 
 def simpleMerge(l: list):

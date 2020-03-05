@@ -1,19 +1,16 @@
 import argparse
 from base import auto_vignere, auto_transpose_t
 
+
 class Args:
     def __init__(self):
         parser = argparse.ArgumentParser()
 
         # Positional mandatory arguments
-        parser.add_argument(
-            "path", help="The file path.", type=str
-        )
+        parser.add_argument("path", help="The file path.", type=str)
 
         # Optional arguments
-        parser.add_argument(
-            "-o", "--output", help="Write output in a file.", type=str
-        )
+        parser.add_argument("-o", "--output", help="Write output in a file.", type=str)
 
         self.args = parser.parse_args()
 
