@@ -1,8 +1,8 @@
 """
 Basic auto cipher and decipher
 """
-from .functions import search_shift, search_vignere, zipMerge
-from .abstract_classes import Shift, LinspaceCut, MultiFunc
+from .functions import search_shift, search_vignere, search_transpose, zipMerge
+from .abstract_classes import Shift, Transpose, LinspaceCut, MultiFunc
 
 
 def decipher(filename: str, dec: callable):
@@ -27,9 +27,42 @@ def auto_vignere(filename: str):
     with open(filename, "r") as f:
         content = f.read()
 
-    result = Vignere(search_vignere(content))(content)
+    k = search_vignere(content)
+    print(f"Detected: {k}")
+    result = Vignere(k)(content)
 
     return result
+
+
+def auto_transpose(filename: str):
+    with open(filename, "r") as f:
+        content = f.read()
+
+    k = search_transpose(content)
+    print(f"Detected: {k}")
+    if k != 0:
+        return Transpose(k)(content)
+
+    return content
+
+
+def auto_vignere_t(content: str):
+
+    k = search_vignere(content)
+    print(f"Detected: {k}")
+    result = Vignere(k)(content)
+
+    return result
+
+
+def auto_transpose_t(content: str):
+
+    k = search_transpose(content)
+    print(f"Detected: {k}")
+    if k != 0:
+        return Transpose(k)(content)
+
+    return content
 
 
 class Vignere:
