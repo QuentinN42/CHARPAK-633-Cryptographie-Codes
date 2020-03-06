@@ -23,11 +23,14 @@ def auto_shift(filename: str):
     return result
 
 
-def auto_vignere(filename: str):
+def auto_vignere(filename: str, n: int = None):
     with open(filename, "r") as f:
         content = f.read()
 
-    k = search_vignere(content)
+    if n:
+        k = search_vignere(content, n)
+    else:
+        k = search_vignere(content)
     print(f"Detected: {k}")
     result = Vignere(k)(content)
 
