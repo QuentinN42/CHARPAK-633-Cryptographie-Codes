@@ -15,7 +15,7 @@ class Enigma:
         self.rotate()
         return chr(pos)
 
-    def rotate(self): # maybe while
+    def rotate(self):  # maybe while
         self.keys[0] += 1
         if self.keys[0] == 256:
             self.keys[0] = 0
