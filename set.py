@@ -28,5 +28,7 @@ def test(gearss):
 
 def test_one(gears):
     res = list(filter(lambda x: EnigmaDecode(gears, get_keys(x))("&d;%H") == "Joël\n", tqdm(range(256**3))))
-    write_json("results/res" + "_".join(gears), res)
+    ln = "results/res" + "_".join(map(str,gears))
+    write_json(ln, res)
     return len(res)
+
