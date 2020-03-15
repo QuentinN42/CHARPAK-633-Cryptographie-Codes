@@ -3,6 +3,9 @@ from tqdm import tqdm
 import json
 
 
+txt = "".join(map(chr, [185, 183, 38, 100, 59, 37, 72]))
+
+
 def get_json(link: str) -> dict:
     return json.load(open(link, "r"))
 
@@ -27,7 +30,7 @@ def test(gearss):
 
 
 def test_one(gears):
-    res = list(filter(lambda x: EnigmaDecode(gears, get_keys(x))("&d;%H") == "Joël\n", tqdm(range(256**3))))
+    res = list(filter(lambda x: "Joël" in EnigmaDecode(gears, get_keys(x))(txt), tqdm(range(256**3))))
     ln = "results/res" + "_".join(map(str,gears))
     write_json(ln, res)
     return len(res)

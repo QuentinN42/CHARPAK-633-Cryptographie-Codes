@@ -1,0 +1,13 @@
+screen -dmS worker0 bash -c "python3 tmp.py ./gears/work0.json; bash"
+screen -dmS worker1 bash -c "python3 tmp.py ./gears/work1.json; bash"
+screen -dmS worker2 bash -c "python3 tmp.py ./gears/work2.json; bash"
+screen -dmS worker3 bash -c "python3 tmp.py ./gears/work3.json; bash"
+screen -dmS worker4 bash -c "python3 tmp.py ./gears/work4.json; bash"
+screen -dmS worker5 bash -c "python3 tmp.py ./gears/work5.json; bash"
+screen -dmS worker6 bash -c "python3 tmp.py ./gears/work6.json; bash"
+screen -dmS worker7 bash -c "python3 tmp.py ./gears/work7.json; bash"
+screen -dmS worker8 bash -c "python3 tmp.py ./gears/work8.json; bash"
+screen -dmS worker9 bash -c "python3 tmp.py ./gears/work9.json; bash"
+screen -dmS worker10 bash -c "python3 tmp.py ./gears/work10.json; bash"
+screen -dmS worker11 bash -c "python3 tmp.py ./gears/work11.json; bash"
+
