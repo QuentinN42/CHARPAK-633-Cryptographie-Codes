@@ -1,0 +1,3 @@
+/home/n42/git/crypto/workingWithC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/n42/git/crypto/workingWithC/cmake-build-debug/CMakeFiles/workingWithC.dir
+/home/n42/git/crypto/workingWithC/cmake-build-debug/CMakeFiles/edit_cache.dir

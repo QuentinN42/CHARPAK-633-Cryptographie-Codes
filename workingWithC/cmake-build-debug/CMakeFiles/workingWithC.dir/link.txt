@@ -1,0 +1,2 @@
+/usr/bin/ar qc libworkingWithC.a  CMakeFiles/workingWithC.dir/test.c.o
+/usr/bin/ranlib libworkingWithC.a

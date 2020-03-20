@@ -229,3 +229,4 @@ jerr
 jlog
 *ignore*
 !/.gitignore
+*cmake-build-debug/
