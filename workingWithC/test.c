@@ -18,7 +18,7 @@ int keys[3] = {0,0,0};
 
 
 const int n = 7;
-int txt[] = {185, 183, 38, 100, 59, 37, 72};
+int txt[] = {28, 141, 219, 32, 192, 129, 176};
 int dec[] = {0, 0, 0, 0, 0, 0, 0};
 
 
@@ -78,7 +78,7 @@ int main()
             }
             if (res == 1)
             {
-                printf("[%d, %d, %d],", keys[0], keys[1], keys[2]);
+                printf("[%d, %d, %d], [%d, %d, %d]\n", gears_index[l][0], gears_index[l][1], gears_index[l][2], keys[0], keys[1], keys[2]);
             }
         }
     }

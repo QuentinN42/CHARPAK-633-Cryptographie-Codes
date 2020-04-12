@@ -3,7 +3,7 @@ from .enigma_data import base_gears
 
 class Enigma:
     def __init__(self, gears, keys):
-        self.gears, self.keys = [base_gears[g] for g in gears], keys
+        self.gears, self.keys = [base_gears[g] for g in gears], list(keys)
 
     def __call__(self, text):
         return "".join(map(self.code_one, text))
