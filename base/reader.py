@@ -6,7 +6,7 @@ from .abstract_classes import Shift, Transpose, LinspaceCut, MultiFunc
 
 
 def decipher(filename: str, dec: callable):
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding='utf8') as f:
         content = f.read()
 
     result = dec(content)
@@ -15,7 +15,7 @@ def decipher(filename: str, dec: callable):
 
 
 def auto_shift(filename: str):
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding='utf8') as f:
         content = f.read()
 
     result = Shift(search_shift(content))(content)
@@ -24,7 +24,7 @@ def auto_shift(filename: str):
 
 
 def auto_vignere(filename: str, n: int = None):
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding='utf8') as f:
         content = f.read()
 
     if n:
@@ -38,7 +38,7 @@ def auto_vignere(filename: str, n: int = None):
 
 
 def auto_transpose(filename: str):
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding='utf8') as f:
         content = f.read()
 
     k = search_transpose(content)
