@@ -1,4 +1,4 @@
-#include <stdio.h>
+-#include <stdio.h>
 
 int pos;
 int all_gears[8][256] = {
@@ -68,6 +68,7 @@ int main()
                 }
                 dec[i] = pos;
             }
+            // TEST
             res = 0;
             for (int i = 0; i < n - 3; i++)
             {
